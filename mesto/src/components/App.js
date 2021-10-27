@@ -1,15 +1,15 @@
+import React from 'react';
 // Пути к изображениям внутри сборки
-import logoPath from './images/logo.svg'; 
-import avatarPath from './images/Avatar.jpg'; 
+import avatarPath from '../images/Avatar.jpg'; 
+// Импорт модулей
+import Header from '../components/Header';
 
 
 function App() {
   return (
     <div className="body">
     <div className="page">
-      <header className="header">
-        <a href="#" className="header__link"><img src={logoPath} alt="Логотип" className="header__logo"/></a>
-      </header>
+      <Header />
       <main>
         <section className="profile">
           <div className="profile__avatar-conteiner">
