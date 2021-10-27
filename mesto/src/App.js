@@ -1,18 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+// Пути к изображениям внутри сборки
+import logoPath from './images/logo.svg'; 
+import avatarPath from './images/Avatar.jpg'; 
+
 
 function App() {
   return (
     <div className="body">
     <div className="page">
       <header className="header">
-        <a href="#" className="header__link"><img src="<%=require('./images/logo.svg')%>" alt="Логотип" className="header__logo"/></a>
+        <a href="#" className="header__link"><img src={logoPath} alt="Логотип" className="header__logo"/></a>
       </header>
       <main>
         <section className="profile">
           <div className="profile__avatar-conteiner">
             <div className="profile__avatar-overlay"></div>
-            <img src="<%=require('./images/Avatar.jpg')%>" alt="Жак Ив Кусто" className="profile__avatar"/>
+            <img src={avatarPath} alt="Жак Ив Кусто" className="profile__avatar"/>
             <button className="profile__avatar-button"></button>
           </div>
           <div className="profile__info">
