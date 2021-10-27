@@ -1,9 +1,8 @@
 import React from 'react';
-// Пути к изображениям внутри сборки
-import avatarPath from '../images/Avatar.jpg'; 
 // Импорт модулей
 import Header from '../components/Header';
 import Main from '../components/Main';
+import Footer from '../components/Footer';
 
 
 function App() {
@@ -12,9 +11,7 @@ function App() {
     <div className="page">
       <Header />
       <Main />
-      <footer className="footer">
-        <p className="footer__text">&copy; 2021 Daria Kamenskaya</p>
-      </footer>
+      <Footer />
       <section className="popup popup-user">
         <div className="popup__content" >
           <button className="popup__close popup__close-user"  type="button"></button>
