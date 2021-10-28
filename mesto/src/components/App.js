@@ -18,24 +18,23 @@ function App() {
   function handleEditAvatarClick() {
     handlePopupClose(false);
     handleEditAvatarPopupOpen(true);
-    {/* document.querySelector('.popup-avatar').classList.add('popup_is-opened'); */}
   };
 
   function handleEditProfileClick() {
     handlePopupClose(false);
     handleEditProfilePopupOpen(true);
-    {/* document.querySelector('.popup-user').classList.add('popup_is-opened'); */}
   };
 
   function handleAddPlaceClick() {
     handlePopupClose(false);
     handleAddPlacePopupOpen(true);
-    {/* document.querySelector('.popup-add').classList.add('popup_is-opened');  */}
   };
 
   function closeAllPopups() {
     handlePopupClose(true);
-    {/* document.querySelector('.popup-add').classList.add('popup_is-opened');  */}
+    handleEditAvatarPopupOpen(false);
+    handleEditProfilePopupOpen(false);
+    handleAddPlacePopupOpen(false);
   };
 
   return (
