@@ -45,8 +45,8 @@ function Main(props) {
     const listCards = cards.map((card) =>
       <article className="element">
         <img src={card.link} alt={card.name} className="element__image"  onClick={() => {
-          <Card card={card}  onCardClick={props.onCardClick} />}
-        } />
+          const card = <Card card={card}  onCardClick={props.onCardClick} />
+        } } />
         <button className="element__remove-button"  type="button" ></button>
         <div className="element__title-block">
           <p className="element__title">{card.name}</p>

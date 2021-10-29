@@ -5,17 +5,16 @@ class Card extends React.Component {
     super(props);
   }
 
-  handleClick = () => {
+  handleClick() {
     this.props.onCardClick(this.props.card);
   }  
 
-  render()   {
-    console.log(this.props.card);
-    return(
-        this.handleClick
-    )
-  }  
 
+  render() {
+      return(
+          this.handleClick()
+      )
+  }
 
 
 
