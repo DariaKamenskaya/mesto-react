@@ -7,16 +7,27 @@ class ImagePopup extends React.Component {
 
 
   render() {
-    return (
-      <section className="popup popup_img">
-        <div className="popup__content popup__content_img" >
-          <button className="popup__close popup__close_img" type="button"></button>
-          <img src="<%=require('./images/element_Karachaevsk.jpg')%>" alt="Карачаево-Черкессия" className="popup__image" />
-          <h3 className="popup__title popup__title_img">Новое место</h3>
-        </div>
-      </section>
-    );
-}
+      console.log(this.props.card, this.props.isPopupClose);
+      if (this.props.card !== null) {
+        this._openedClass = 'popup_is-opened';
+      }
+      if (this.props.isPopupClose) {
+        this._openedClass = ' ';
+      }
+       if (this.props.card !== null  &&  !this.props.isPopupClose) { 
+        return (
+          <section className={`popup popup_img  ${this._openedClass}`}>
+            <div className="popup__content popup__content_img" >
+              <button className="popup__close popup__close_img" type="button"></button>
+              <img src={this.props.card.link} alt={this.props.card.name} className="popup__image" />
+              <h3 className="popup__title popup__title_img">{this.props.card.name}</h3>
+            </div>
+          </section>
+        );
+       } else {
+          return (null);
+      } 
+  }
 
 }
   

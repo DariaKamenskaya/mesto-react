@@ -1,6 +1,7 @@
 import React from 'react'; 
 //
 import API, { apiData } from '../utils/Api';
+import Card from './Card';
 
 
 function Main(props) {
@@ -10,7 +11,7 @@ function Main(props) {
   const [userAvatar, handleGetUserAvatar] = React.useState(null);
   const [cards, setCards] = React.useState([]);
 
-  
+
 
   React.useEffect(() => {
     // запрос в API за пользовательскими данными
@@ -30,7 +31,6 @@ function Main(props) {
     // запрос в API за карточками мест
     apiData.getInitialCards()
     .then(items => {
-      console.log(items);
       setCards(items);
     })
     .catch((err) => {
@@ -41,9 +41,12 @@ function Main(props) {
 
   function CardList(props) {
     const cards = props.cards;
+    {/* cards.map((card) => <Card card={card}  onCardClick={props.onCardClick} /> ) */}
     const listCards = cards.map((card) =>
       <article className="element">
-        <img src={card.link} alt={card.name} className="element__image" />
+        <img src={card.link} alt={card.name} className="element__image"  onClick={() => {
+          <Card card={card}  onCardClick={props.onCardClick} />}
+        } />
         <button className="element__remove-button"  type="button" ></button>
         <div className="element__title-block">
           <p className="element__title">{card.name}</p>
@@ -78,7 +81,7 @@ function Main(props) {
         </div>
         <button className="profile__add-button" type="button"  onClick={props.onAddPlace}></button>
       </section>
-      <CardList cards={cards} />,
+      <CardList cards={cards} />
     </main>
   );
 }
