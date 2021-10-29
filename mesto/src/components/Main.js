@@ -2,12 +2,15 @@ import React from 'react';
 //
 import API, { apiData } from '../utils/Api';
 
+
 function Main(props) {
 
   const [userName, handleGetUserName] = React.useState(null);
   const [userDescription, handleGetUserDescription] = React.useState(null);
   const [userAvatar, handleGetUserAvatar] = React.useState(null);
   const [cards, setCards] = React.useState([]);
+
+  
 
   React.useEffect(() => {
     // запрос в API за пользовательскими данными
@@ -33,23 +36,30 @@ function Main(props) {
     .catch((err) => {
       console.log(err); // "Что-то пошло не так: ..."
       return [];
-    });
-    return (
-      cards.forEach(item => {
-        <article className="element">
-        <img src={item.link} alt={item.name} className="element__image" />
+    })
+  }, []);
+
+  function CardList(props) {
+    const cards = props.cards;
+    const listCards = cards.map((card) =>
+      <article className="element">
+        <img src={card.link} alt={card.name} className="element__image" />
         <button className="element__remove-button"  type="button" ></button>
         <div className="element__title-block">
-          <p className="element__title">{item.name}</p>
+          <p className="element__title">{card.name}</p>
           <div className="element__likes">
             <button className="element__heart-button"  type="button"></button>
-            <p className="element__likes-number">{item.likes.length}</p>
+            <p className="element__likes-number">{card.likes.length}</p>
           </div>
-        </div>
-      </article>
-      })
-    )
-  }, []);
+       </div>
+    </article>
+    );
+    return (
+      <section className="elements">
+        {listCards}
+      </section>
+    );
+  }
 
   return (
     <main>
@@ -68,8 +78,7 @@ function Main(props) {
         </div>
         <button className="profile__add-button" type="button"  onClick={props.onAddPlace}></button>
       </section>
-      <section className="elements">
-      </section>
+      <CardList cards={cards} />,
     </main>
   );
 }
@@ -77,3 +86,4 @@ function Main(props) {
 
     
 export default Main;
+
