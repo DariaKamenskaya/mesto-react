@@ -7,7 +7,6 @@ class ImagePopup extends React.Component {
 
 
   render() {
-      console.log(this.props.card, this.props.isPopupClose);
       if (this.props.card !== null) {
         this._openedClass = 'popup_is-opened';
       }
@@ -18,7 +17,7 @@ class ImagePopup extends React.Component {
         return (
           <section className={`popup popup_img  ${this._openedClass}`}>
             <div className="popup__content popup__content_img" >
-              <button className="popup__close popup__close_img" type="button"></button>
+              <button className="popup__close popup__close_img" type="button" onClick={this.props.onClosePopup}></button>
               <img src={this.props.card.link} alt={this.props.card.name} className="popup__image" />
               <h3 className="popup__title popup__title_img">{this.props.card.name}</h3>
             </div>
