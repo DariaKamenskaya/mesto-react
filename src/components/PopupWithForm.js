@@ -10,14 +10,14 @@ class PopupWithForm extends React.Component {
   };
 
   render() {
-    if (this.props.isOpen) {
+   {/*   if (this.props.isOpen) {
         this._openedClass = 'popup_is-opened';
     }
     if (this.props.onClose) {
         this._openedClass = ' ';
-    }
+    } */}
     return (
-      <section className={`popup popup-${this.props.name} ${this._openedClass}`} >
+      <section className={`popup popup-${this.props.name} ${this.props.isOpen ? 'popup_is-opened' : ''}`} >
         <div className="popup__content" >
           <button className={`popup__close popup__close-${this.props.name}`}  type="button" onClick={this.props.onClosePopup}></button>
           <h3 className="popup__title">{this.props.title}</h3>

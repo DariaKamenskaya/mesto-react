@@ -7,7 +7,7 @@
     /* отступов (по 200px с каждой стороны)*/
     margin: 0 auto 0;
     /* выше для экранов больше 1280px отцентрировали весь контент */
-    padding: 2% 15%;
+    padding: 0 15%;
     font-family: Inter, Arial, sans-serif;
 }
 
@@ -19,25 +19,25 @@
 
   @media screen and (max-width: 1230px) {
     .page {
-        padding: 2% 10%;
+        padding: 0 10%;
     }
   }
 
   @media screen and (max-width: 1090px) {
     .page {
-        padding: 2% 5%;
+        padding: 0 5%;
     }
   }
 
   @media screen and (max-width: 970px) {
     .page {
-        padding: 2% 3%;
+        padding: 0 3%;
     }
   }
 
   @media screen and (max-width: 925px) {
     .page {
-        padding: 2% 0;
+        padding: 0;
     }
   }
   
