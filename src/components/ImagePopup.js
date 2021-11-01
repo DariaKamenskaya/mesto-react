@@ -24,7 +24,10 @@ class ImagePopup extends React.Component {
           </section>
         );
        } else {
-          return (null);
+          return (
+            <section className="popup popup_img">
+          </section>
+          );
       } 
   }
 
