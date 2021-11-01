@@ -50,11 +50,11 @@ function App() {
       <Footer />
       <PopupWithForm name="user" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}  onClosePopup={closeAllPopups}>
         <label className="popup__form-field">
-          <input type="text" id="name-input" className="popup__input popup__input_type_name"  placeholder="Имя" name="name" required minlength="2" maxlength="40"/>
+          <input type="text" id="name-input" className="popup__input popup__input_type_name"  placeholder="Имя" name="name" required minLength="2" maxLength="40"/>
           <span id="name-input-error" className="popup__input-error"></span>
         </label>
         <label className="popup__form-field">
-          <input type="text" id="work-input"  placeholder="О себе" className="popup__input popup__input_type_work" name='about' required minlength='2'  maxlength='200'/>
+          <input type="text" id="work-input"  placeholder="О себе" className="popup__input popup__input_type_work" name='about' required minLength='2'  maxLength='200'/>
           <span id="work-input-error" className="popup__input-error"></span>
         </label>
         <button className="popup__submit-btn popup__submit-btn_edit"  type="submit">
@@ -72,7 +72,7 @@ function App() {
       </PopupWithForm>
       <PopupWithForm name="add" title="Новое место" isOpen={isAddPlacePopupOpen}  onClosePopup={closeAllPopups}>
         <label className="popup__form-field">
-          <input type="text" id="place-input"  placeholder="Название" className="popup__input popup__input_type_place-name" name='name' required minlength="2" maxlength="30" />
+          <input type="text" id="place-input"  placeholder="Название" className="popup__input popup__input_type_place-name" name='name' required minLength="2" maxLength="30" />
           <span id="place-input-error" className="popup__input-error"></span>
         </label>
         <label className="popup__form-field">

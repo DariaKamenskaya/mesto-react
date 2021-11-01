@@ -1,6 +1,6 @@
 import React from 'react'; 
 //
-import API, { apiData } from '../utils/Api';
+import  {apiData}  from '../utils/Api';
 import Card from './Card';
 
 
@@ -33,8 +33,8 @@ function Main(props) {
 
   function CardList(props) {
     const cards = props.cards;
-    const listCards = cards.map((card) =>
-      <Card card={card} onCardClick={props.onCardClick} />
+    const listCards = cards.map((card,i) =>
+      <Card card={card} onCardClick={props.onCardClick} key={card._id} />
     );
     return (
       <section className="elements">

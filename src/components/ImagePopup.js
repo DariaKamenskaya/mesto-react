@@ -1,9 +1,7 @@
 import React from 'react';
 
 class ImagePopup extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
 
 
   render() {
