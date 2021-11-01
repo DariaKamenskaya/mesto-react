@@ -15,7 +15,7 @@ class Card extends React.Component {
   render() {
     return(
       <article className="element">
-        <img src={this.props.card.link} alt={this.props.card.name} className="element__image"  onClick={() => this.handleClick()} />
+        <img src={this.props.card.link} alt={this.props.card.name} className="element__image"  onClick={this.handleClick} />
         <button className="element__remove-button"  type="button" ></button>
         <div className="element__title-block">
           <p className="element__title">{this.props.card.name}</p>
