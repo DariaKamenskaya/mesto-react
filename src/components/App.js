@@ -12,34 +12,28 @@ function App() {
   const [isEditProfilePopupOpen, handleEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, handleAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, handleEditAvatarPopupOpen] = React.useState(false);
-  {/* const [isPopupClose, handlePopupClose] = React.useState(false); */}
   const [selectedCard, setSelectedCard] = React.useState(null);
 
 
 
   function handleEditAvatarClick() {
-    {/* handlePopupClose(false); */}
     handleEditAvatarPopupOpen(true);
   };
 
   function handleEditProfileClick() {
-    {/* handlePopupClose(false); */}
     handleEditProfilePopupOpen(true);
   };
 
   function handleAddPlaceClick() {
-    {/* handlePopupClose(false); */}
     handleAddPlacePopupOpen(true);
   };
 
   function handleCardClick(card) {
-    {/* handlePopupClose(false); */}
     setSelectedCard(card);
   };
 
 
   function closeAllPopups() {
-     {/* handlePopupClose(true);  */}
     handleEditAvatarPopupOpen(false);
     handleEditProfilePopupOpen(false);
     handleAddPlacePopupOpen(false);

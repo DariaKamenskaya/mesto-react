@@ -7,15 +7,9 @@ class ImagePopup extends React.Component {
 
 
   render() {
-    {/*  if (this.props.card !== null) {
-        this._openedClass = 'popup_is-opened';
-      }
-      if (this.props.isPopupClose) {
-        this._openedClass = ' ';
-      } */}
        if (this.props.card !== null ) { 
         return (
-          <section className={`popup popup_img  ${this.props.card ? 'popup_is-opened' : ''}`}>
+          <section className="popup popup_img popup_is-opened">
             <div className="popup__content popup__content_img" >
               <button className="popup__close popup__close_img" type="button" onClick={this.props.onClosePopup}></button>
               <img src={this.props.card.link} alt={this.props.card.name} className="popup__image" /> 
@@ -24,6 +18,7 @@ class ImagePopup extends React.Component {
           </section>
         );
        } else {
+         // для плавного открытия попапа
           return (
             <section className="popup popup_img">
           </section>
