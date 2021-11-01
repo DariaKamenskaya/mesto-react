@@ -15,23 +15,15 @@ function Main(props) {
 
   React.useEffect(() => {
     // запрос в API за пользовательскими данными
-    apiData.getUserData()
-    .then(res => {
-      handleGetUserName(res.name);
-      handleGetUserDescription(res.about); 
-      handleGetUserAvatar(res.avatar);
-    })
-    .catch((err) => {
-      console.log(err); // "Что-то пошло не так: ..."
-      return [];
-    })
-  });
-
-  React.useEffect(() => {
-    // запрос в API за карточками мест
-    apiData.getInitialCards()
-    .then(items => {
-      setCards(items);
+    Promise.all([ 
+      apiData.getUserData(),
+      apiData.getInitialCards()
+    ])
+    .then((res) => {
+      handleGetUserName(res[0].name);
+      handleGetUserDescription(res[0].about); 
+      handleGetUserAvatar(res[0].avatar);
+      setCards(res[1]);
     })
     .catch((err) => {
       console.log(err); // "Что-то пошло не так: ..."
