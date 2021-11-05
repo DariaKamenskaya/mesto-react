@@ -13,6 +13,7 @@ function App() {
   const [isAddPlacePopupOpen, handleAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, handleEditAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
+  const [currentUser, setCurrentUser] = React.useState([]);
 
 
 
@@ -39,6 +40,18 @@ function App() {
     handleAddPlacePopupOpen(false);
     setSelectedCard(null);
   };
+
+  React.useEffect(() => {
+    // запрос в API за пользовательскими данными
+      apiData.getUserData()
+    .then((res) => {
+      setCurrentUser(res);
+    })
+    .catch((err) => {
+      console.log(err); // "Что-то пошло не так: ..."
+      return [];
+    })
+  }, []);
 
 
 
