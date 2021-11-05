@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import PopupWithForm from '../components/PopupWithForm';
 import ImagePopup from '../components/ImagePopup';
 import { CurrentUserContext, currentUserContextData } from '../contexts/CurrentUserContext';
+import  {apiData}  from '../utils/Api';
 
 
 
