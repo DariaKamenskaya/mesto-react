@@ -7,8 +7,9 @@ import PopupWithForm from '../components/PopupWithForm';
 import ImagePopup from '../components/ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import  {apiData}  from '../utils/Api';
-import {CurrentCardsContext}  from '../contexts/CurrentCardsContext'
-import EditProfilePopup from './EditProfilePopup'
+import {CurrentCardsContext}  from '../contexts/CurrentCardsContext';
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup'
 
 
 
@@ -84,6 +85,7 @@ function App() {
         <CurrentCardsContext.Provider value={currentCards}>
           <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} setCards={setCurrentCards}/>
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/> 
+          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} /> 
         </CurrentCardsContext.Provider>
         <Footer />
         {/* <PopupWithForm name="user" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}  onClosePopup={closeAllPopups}>
@@ -98,7 +100,7 @@ function App() {
           <button className="popup__submit-btn popup__submit-btn_edit"  type="submit">
             Сохранить
           </button>
-        </PopupWithForm> */}
+        </PopupWithForm> 
         <PopupWithForm name="avatar" title="Обновить аватар" isOpen={isEditAvatarPopupOpen}  onClosePopup={closeAllPopups}>
           <label className="popup__form-field">
             <input type="url" id="url-input_avatar" placeholder="Ссылка на картинку" className="popup__input popup__input_type_avatar-img" name='link' required />
@@ -107,7 +109,7 @@ function App() {
           <button className="popup__submit-btn popup__submit-btn_avatar"  type="submit"> 
             Сохранить
           </button>
-        </PopupWithForm>
+        </PopupWithForm> */}
         <PopupWithForm name="add" title="Новое место" isOpen={isAddPlacePopupOpen}  onClosePopup={closeAllPopups}>
           <label className="popup__form-field">
             <input type="text" id="place-input"  placeholder="Название" className="popup__input popup__input_type_place-name" name='name' required minLength="2" maxLength="30" />
