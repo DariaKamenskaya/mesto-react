@@ -47,6 +47,18 @@ function App() {
     setSelectedCard(null);
   };
 
+  function handleUpdateUser(user) {
+    apiData.setUserData(user)
+    .then((res) => {
+      setCurrentUser(res);
+      closeAllPopups();
+    })
+    .catch((err) => {
+      console.log(err); // "Что-то пошло не так: ..."
+      return [];
+    })
+  };
+
   React.useEffect(() => {
     // запрос в API за пользовательскими данными
     Promise.all([ 
@@ -71,7 +83,7 @@ function App() {
         <Header />
         <CurrentCardsContext.Provider value={currentCards}>
           <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} setCards={setCurrentCards}/>
-          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} /> 
+          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/> 
         </CurrentCardsContext.Provider>
         <Footer />
         {/* <PopupWithForm name="user" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}  onClosePopup={closeAllPopups}>

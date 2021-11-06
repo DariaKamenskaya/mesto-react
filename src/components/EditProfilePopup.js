@@ -27,9 +27,19 @@ function EditProfilePopup(props) {
     setDescription(e.target.value);
   }
 
+  function handleSubmit(e) {
+    // Запрещаем браузеру переходить по адресу формы
+    e.preventDefault();
+    // Передаём значения управляемых компонентов во внешний обработчик
+    props.onUpdateUser({
+      name,
+      about: description,
+    });
+  } 
+
 
   return(
-    <PopupWithForm name="user" title="Редактировать профиль" isOpen={props.isOpen}  onClosePopup={props.onClose}>
+    <PopupWithForm name="user" title="Редактировать профиль" isOpen={props.isOpen}  onClosePopup={props.onClose} onSubmit={handleSubmit} onUpdateUser={props.onUpdateUser}>
     <label className="popup__form-field">
       <input type="text" id="name-input" className="popup__input popup__input_type_name"  placeholder="Имя" 
              name="name" required minLength="2" maxLength="40" value={name} onChange={handleChangeName}/>
