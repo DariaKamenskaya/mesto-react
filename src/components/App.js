@@ -69,7 +69,7 @@ function App() {
       <div className="page">
         <Header />
         <CurrentCardsContext.Provider value={currentCards}>
-          <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick}/>
+          <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} setCards={setCurrentCards}/>
         </CurrentCardsContext.Provider>
         <Footer />
         <PopupWithForm name="user" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}  onClosePopup={closeAllPopups}>
@@ -119,3 +119,4 @@ function App() {
 }
 
 export default App;
+

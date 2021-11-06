@@ -3,6 +3,9 @@ import React from 'react';
 function Card(props) {
 
   handleClick = handleClick.bind(this);
+  handleLikeClick = handleLikeClick.bind(this);
+
+
 
   // Определяем, являемся ли мы владельцем текущей карточки
   const isOwn = props.card.owner._id === props.currentUser._id;
@@ -24,6 +27,10 @@ function Card(props) {
     props.onCardClick(props.card);
   } 
 
+  function handleLikeClick() {
+    props.onCardLike(props.card, props.currentUser,  props.setCards);
+  }
+
 
 
   return(
@@ -33,7 +40,7 @@ function Card(props) {
       <div className="element__title-block">
         <p className="element__title">{props.card.name}</p>
         <div className="element__likes">
-          <button className={cardLikeButtonClassName}  type="button"></button>
+          <button className={cardLikeButtonClassName}  type="button" onClick={handleLikeClick}></button>
           <p className="element__likes-number">{props.card.likes.length}</p>
         </div>
       </div>
