@@ -1,19 +1,43 @@
 import React from 'react';
 import PopupWithForm from '../components/PopupWithForm';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 
 function EditProfilePopup(props) {
 
+  // Стейт, в котором содержится значение инпута
+  const [name, setName] = React.useState('');
+  const [description, setDescription] = React.useState('');
+  // Подписка на контекст
+  const currentUser = React.useContext(CurrentUserContext);
+
+  // После загрузки текущего пользователя из API
+  // его данные будут использованы в управляемых компонентах.
+  React.useEffect(() => {
+    setName(currentUser.name);
+    setDescription(currentUser.about);
+  }, [currentUser]); 
+
+  // Обработчик изменения инпута обновляет стейт
+  function handleChangeName(e) {
+    setName(e.target.value);
+  }
+
+  function handleChangeDescription(e) {
+    setDescription(e.target.value);
+  }
 
 
   return(
     <PopupWithForm name="user" title="Редактировать профиль" isOpen={props.isOpen}  onClosePopup={props.onClose}>
     <label className="popup__form-field">
-      <input type="text" id="name-input" className="popup__input popup__input_type_name"  placeholder="Имя" name="name" required minLength="2" maxLength="40"/>
+      <input type="text" id="name-input" className="popup__input popup__input_type_name"  placeholder="Имя" 
+             name="name" required minLength="2" maxLength="40" value={name} onChange={handleChangeName}/>
       <span id="name-input-error" className="popup__input-error"></span>
     </label>
     <label className="popup__form-field">
-      <input type="text" id="work-input"  placeholder="О себе" className="popup__input popup__input_type_work" name='about' required minLength='2'  maxLength='200'/>
+      <input type="text" id="work-input"  placeholder="О себе" className="popup__input popup__input_type_work" 
+             name='about' required minLength='2'  maxLength='200' value={description} onChange={handleChangeDescription}/>
       <span id="work-input-error" className="popup__input-error"></span>
     </label>
     <button className="popup__submit-btn popup__submit-btn_edit"  type="submit">
