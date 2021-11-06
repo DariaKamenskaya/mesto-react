@@ -4,6 +4,7 @@ function Card(props) {
 
   handleClick = handleClick.bind(this);
   handleLikeClick = handleLikeClick.bind(this);
+  handleDeleteClick = handleDeleteClick.bind(this);
 
 
 
@@ -31,12 +32,16 @@ function Card(props) {
     props.onCardLike(props.card, props.currentUser,  props.setCards);
   }
 
+  function handleDeleteClick() {
+    props.onCardDelete(props.card,  props.setCards);
+  }
+
 
 
   return(
     <article className="element">
       <img src={props.card.link} alt={props.card.name} className="element__image"  onClick={handleClick} />
-      <button className={cardDeleteButtonClassName}  type="button" ></button>
+      <button className={cardDeleteButtonClassName}  type="button" onClick={handleDeleteClick}></button>
       <div className="element__title-block">
         <p className="element__title">{props.card.name}</p>
         <div className="element__likes">

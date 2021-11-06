@@ -31,11 +31,26 @@ function Main(props) {
     
   } 
 
+  function handleCardDelete(deletedCard, setCurrentCards) {
+    // Отправляем запрос в API
+    apiData.deleteCard(deletedCard._id)
+    .then(() => {
+      setCurrentCards((cardsData) => cardsData.filter((c) => {return c._id != deletedCard._id }));
+    })
+    .catch((err) => {
+      console.log(err); // "Что-то пошло не так: ..."
+      return [];
+    });
+    
+  } 
+
 
   function CardList(props) {
     const cards = props.cards;
     const listCards = cards.map((card) =>
-      <Card card={card} onCardClick={props.onCardClick} key={card._id} currentUser={userData} onCardLike={props.onCardLike} setCards={props.setCards}/>
+      <Card card={card} onCardClick={props.onCardClick} key={card._id} 
+        currentUser={userData} onCardLike={props.onCardLike} setCards={props.setCards}
+        onCardDelete={props.onCardDelete}/>
     );
     return (
       <section className="elements">
@@ -61,7 +76,7 @@ function Main(props) {
         </div>
         <button className="profile__add-button" type="button"  onClick={props.onAddPlace}></button>
       </section>
-     <CardList cards={cardsData} onCardClick={props.onCardClick} onCardLike={handleCardLike} setCards={props.setCards}/>  
+     <CardList cards={cardsData} onCardClick={props.onCardClick} onCardLike={handleCardLike} setCards={props.setCards} onCardDelete={handleCardDelete}/>  
     </main>
   );
 }
