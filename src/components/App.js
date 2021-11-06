@@ -5,7 +5,7 @@ import Main from '../components/Main';
 import Footer from '../components/Footer';
 import PopupWithForm from '../components/PopupWithForm';
 import ImagePopup from '../components/ImagePopup';
-import { CurrentUserContext, currentUserContextData } from '../contexts/CurrentUserContext';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import  {apiData}  from '../utils/Api';
 
 
@@ -48,6 +48,7 @@ function App() {
     // запрос в API за пользовательскими данными
     apiData.getUserData()
     .then((res) => {
+      console.log(res);
       setCurrentUser(res);
     })
     .catch((err) => {
@@ -59,7 +60,7 @@ function App() {
 
 
   return (
-    <CurrentUserContext.Provider value={currentUserContextData[currentUser]}>
+    <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header />
         <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick}/>
