@@ -8,6 +8,7 @@ import ImagePopup from '../components/ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import  {apiData}  from '../utils/Api';
 import {CurrentCardsContext}  from '../contexts/CurrentCardsContext'
+import EditProfilePopup from './EditProfilePopup'
 
 
 
@@ -70,9 +71,10 @@ function App() {
         <Header />
         <CurrentCardsContext.Provider value={currentCards}>
           <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} setCards={setCurrentCards}/>
+          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} /> 
         </CurrentCardsContext.Provider>
         <Footer />
-        <PopupWithForm name="user" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}  onClosePopup={closeAllPopups}>
+        {/* <PopupWithForm name="user" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}  onClosePopup={closeAllPopups}>
           <label className="popup__form-field">
             <input type="text" id="name-input" className="popup__input popup__input_type_name"  placeholder="Имя" name="name" required minLength="2" maxLength="40"/>
             <span id="name-input-error" className="popup__input-error"></span>
@@ -84,7 +86,7 @@ function App() {
           <button className="popup__submit-btn popup__submit-btn_edit"  type="submit">
             Сохранить
           </button>
-        </PopupWithForm>
+        </PopupWithForm> */}
         <PopupWithForm name="avatar" title="Обновить аватар" isOpen={isEditAvatarPopupOpen}  onClosePopup={closeAllPopups}>
           <label className="popup__form-field">
             <input type="url" id="url-input_avatar" placeholder="Ссылка на картинку" className="popup__input popup__input_type_avatar-img" name='link' required />
