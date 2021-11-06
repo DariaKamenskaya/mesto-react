@@ -7,6 +7,7 @@ import PopupWithForm from '../components/PopupWithForm';
 import ImagePopup from '../components/ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import  {apiData}  from '../utils/Api';
+import {CurrentCardsContext}  from '../contexts/CurrentCardsContext'
 
 
 
@@ -17,6 +18,7 @@ function App() {
   const [isEditAvatarPopupOpen, handleEditAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({});
+  const [currentCards, setCurrentCards] = React.useState([]);
 
 
 
@@ -46,10 +48,13 @@ function App() {
 
   React.useEffect(() => {
     // запрос в API за пользовательскими данными
-    apiData.getUserData()
+    Promise.all([ 
+    apiData.getUserData(),
+    apiData.getInitialCards()
+    ])
     .then((res) => {
-      console.log(res);
-      setCurrentUser(res);
+      setCurrentUser(res[0]);
+      setCurrentCards(res[1])
     })
     .catch((err) => {
       console.log(err); // "Что-то пошло не так: ..."
@@ -63,7 +68,9 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header />
-        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick}/>
+        <CurrentCardsContext.Provider value={currentCards}>
+          <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick}/>
+        </CurrentCardsContext.Provider>
         <Footer />
         <PopupWithForm name="user" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}  onClosePopup={closeAllPopups}>
           <label className="popup__form-field">

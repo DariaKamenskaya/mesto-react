@@ -3,31 +3,26 @@ import React from 'react';
 import  {apiData}  from '../utils/Api';
 import Card from './Card';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import {CurrentCardsContext}  from '../contexts/CurrentCardsContext'
 
 
 function Main(props) {
 
-  //  const [userName, handleGetUserName] = React.useState(null);
-  // const [userDescription, handleGetUserDescription] = React.useState(null);
-  // const [userAvatar, handleGetUserAvatar] = React.useState(null);
+
   const [cards, setCards] = React.useState([]);
    // Подписываемся на контекст CurrentUserContext
   const userData = React.useContext(CurrentUserContext);
-
-  console.log(userData);
+  // Подписываемся на контекст CurrentCardsContext
+  const cardsData = React.useContext(CurrentCardsContext);
 
 
 
  {/* React.useEffect(() => {
     // запрос в API за пользовательскими данными
     Promise.all([ 
-      //apiData.getUserData(),
       apiData.getInitialCards()
     ])
     .then((res) => {
-      // handleGetUserName(res[0].name);
-      // handleGetUserDescription(res[0].about); 
-      // handleGetUserAvatar(res[0].avatar);
       setCards(res); //  [1]
     })
     .catch((err) => {
@@ -45,7 +40,7 @@ function Main(props) {
       <section className="elements">
         {listCards}
       </section>
-    );
+    );  
   }
 
   return (
@@ -65,7 +60,7 @@ function Main(props) {
         </div>
         <button className="profile__add-button" type="button"  onClick={props.onAddPlace}></button>
       </section>
-    {/*  <CardList cards={cards} onCardClick={props.onCardClick}/> */}  
+     <CardList cards={cardsData} onCardClick={props.onCardClick}/>  
     </main>
   );
 }
