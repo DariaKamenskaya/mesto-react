@@ -33,8 +33,8 @@ function Main(props) {
 
   function CardList(props) {
     const cards = props.cards;
-    const listCards = cards.map((card,i) =>
-      <Card card={card} onCardClick={props.onCardClick} key={card._id} />
+    const listCards = cards.map((card) =>
+      <Card card={card} onCardClick={props.onCardClick} key={card._id} currentUser={userData}/>
     );
     return (
       <section className="elements">

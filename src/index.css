@@ -29,6 +29,7 @@ body {
 @import url(./blocks/element/element.css);
 @import url(./blocks/element/__image/element__image.css);
 @import url(./blocks/element/__remove-button/element__remove-button.css);
+@import url(./blocks/element/__remove-button/_hidden/element__remove-button_hidden.css);
 @import url(./blocks/element/__title-block/element__title-block.css);
 @import url(./blocks/element/__title/element__title.css);
 @import url(./blocks/element/__likes/element__likes.css);
