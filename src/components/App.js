@@ -100,7 +100,20 @@ function App() {
       console.log(err); // "Что-то пошло не так: ..."
       return [];
     });
-    
+  } 
+
+  function handleAddPlaceSubmit(newCard, currentCards) {
+    apiData.postCard(newCard)
+    .then((res) => {
+      console.log(res);
+      // Создадим экземпляр карточки
+      setCurrentCards([res, ...currentCards]); 
+      closeAllPopups();
+    })
+    .catch((err) => {
+      console.log(err); // "Что-то пошло не так: ..."
+      return [];
+    });
   } 
 
 
@@ -132,7 +145,7 @@ function App() {
                 setCards={setCurrentCards} onCardLike={handleCardLike} onCardDelete={handleCardDelete}/>
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/> 
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/> 
-          <AddPlacePopup   isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} /> 
+          <AddPlacePopup   isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit}/> 
         </CurrentCardsContext.Provider>
         <Footer />
         {/* <PopupWithForm name="user" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}  onClosePopup={closeAllPopups}>
