@@ -10,6 +10,7 @@ import  {apiData}  from '../utils/Api';
 import {CurrentCardsContext}  from '../contexts/CurrentCardsContext';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup'
+import AddPlacePopup from './AddPlacePopup'
 
 
 
@@ -131,6 +132,7 @@ function App() {
                 setCards={setCurrentCards} onCardLike={handleCardLike} onCardDelete={handleCardDelete}/>
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/> 
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/> 
+          <AddPlacePopup   isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} /> 
         </CurrentCardsContext.Provider>
         <Footer />
         {/* <PopupWithForm name="user" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}  onClosePopup={closeAllPopups}>
@@ -154,7 +156,7 @@ function App() {
           <button className="popup__submit-btn popup__submit-btn_avatar"  type="submit"> 
             Сохранить
           </button>
-        </PopupWithForm> */}
+        </PopupWithForm> 
         <PopupWithForm name="add" title="Новое место" isOpen={isAddPlacePopupOpen}  onClosePopup={closeAllPopups}>
           <label className="popup__form-field">
             <input type="text" id="place-input"  placeholder="Название" className="popup__input popup__input_type_place-name" name='name' required minLength="2" maxLength="30" />
@@ -167,7 +169,7 @@ function App() {
           <button className="popup__submit-btn popup__submit-btn_add"  type="submit"> 
             Создать
           </button>
-        </PopupWithForm>
+        </PopupWithForm> */}
         <ImagePopup  card={selectedCard}  onClosePopup={closeAllPopups}/>
         <PopupWithForm name="delete" title="Вы уверены?"  onClosePopup={closeAllPopups}>
           <button className="popup__submit-btn popup__submit-btn_delete"  type="submit">
