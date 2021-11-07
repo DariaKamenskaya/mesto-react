@@ -12,8 +12,6 @@ import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup'
 
-
-
 function App() {
 
   const [isEditProfilePopupOpen, handleEditProfilePopupOpen] = React.useState(false);
@@ -22,8 +20,6 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({});
   const [currentCards, setCurrentCards] = React.useState([]);
-
-
 
   function handleEditAvatarClick() {
     handleEditAvatarPopupOpen(true);
@@ -40,7 +36,6 @@ function App() {
   function handleCardClick(card) {
     setSelectedCard(card);
   };
-
 
   function closeAllPopups() {
     handleEditAvatarPopupOpen(false);
@@ -73,11 +68,9 @@ function App() {
     })
   };
 
-
   function handleCardLike(card, currentUser, setCurrentCards) {
     // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some(i => i._id === currentUser._id);
-    
     // Отправляем запрос в API и получаем обновлённые данные карточки
     apiData.changeLikeCardStatus(card._id, isLiked, setCurrentCards)
     .then((newCard) => {
@@ -105,7 +98,6 @@ function App() {
   function handleAddPlaceSubmit(newCard, currentCards) {
     apiData.postCard(newCard)
     .then((res) => {
-      console.log(res);
       // Создадим экземпляр карточки
       setCurrentCards([res, ...currentCards]); 
       closeAllPopups();
@@ -115,7 +107,6 @@ function App() {
       return [];
     });
   } 
-
 
   React.useEffect(() => {
     // запрос в API за пользовательскими данными
@@ -133,8 +124,6 @@ function App() {
     })
   }, []);
 
-
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -148,41 +137,6 @@ function App() {
           <AddPlacePopup   isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit}/> 
         </CurrentCardsContext.Provider>
         <Footer />
-        {/* <PopupWithForm name="user" title="Редактировать профиль" isOpen={isEditProfilePopupOpen}  onClosePopup={closeAllPopups}>
-          <label className="popup__form-field">
-            <input type="text" id="name-input" className="popup__input popup__input_type_name"  placeholder="Имя" name="name" required minLength="2" maxLength="40"/>
-            <span id="name-input-error" className="popup__input-error"></span>
-          </label>
-          <label className="popup__form-field">
-            <input type="text" id="work-input"  placeholder="О себе" className="popup__input popup__input_type_work" name='about' required minLength='2'  maxLength='200'/>
-            <span id="work-input-error" className="popup__input-error"></span>
-          </label>
-          <button className="popup__submit-btn popup__submit-btn_edit"  type="submit">
-            Сохранить
-          </button>
-        </PopupWithForm> 
-        <PopupWithForm name="avatar" title="Обновить аватар" isOpen={isEditAvatarPopupOpen}  onClosePopup={closeAllPopups}>
-          <label className="popup__form-field">
-            <input type="url" id="url-input_avatar" placeholder="Ссылка на картинку" className="popup__input popup__input_type_avatar-img" name='link' required />
-            <span id="url-input_avatar-error" className="popup__input-error"></span>
-          </label>
-          <button className="popup__submit-btn popup__submit-btn_avatar"  type="submit"> 
-            Сохранить
-          </button>
-        </PopupWithForm> 
-        <PopupWithForm name="add" title="Новое место" isOpen={isAddPlacePopupOpen}  onClosePopup={closeAllPopups}>
-          <label className="popup__form-field">
-            <input type="text" id="place-input"  placeholder="Название" className="popup__input popup__input_type_place-name" name='name' required minLength="2" maxLength="30" />
-            <span id="place-input-error" className="popup__input-error"></span>
-          </label>
-          <label className="popup__form-field">
-            <input type="url" id="url-input" placeholder="Ссылка на картинку" className="popup__input popup__input_type_place-img" name='link' required />
-            <span id="url-input-error" className="popup__input-error"></span>
-          </label>
-          <button className="popup__submit-btn popup__submit-btn_add"  type="submit"> 
-            Создать
-          </button>
-        </PopupWithForm> */}
         <ImagePopup  card={selectedCard}  onClosePopup={closeAllPopups}/>
         <PopupWithForm name="delete" title="Вы уверены?"  onClosePopup={closeAllPopups}>
           <button className="popup__submit-btn popup__submit-btn_delete"  type="submit">

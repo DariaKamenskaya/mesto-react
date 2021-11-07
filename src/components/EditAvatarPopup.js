@@ -2,7 +2,6 @@ import React from 'react';
 import PopupWithForm from '../components/PopupWithForm';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-
 function EditAvatarPopup(props) {
 
   // Подписка на контекст
@@ -10,15 +9,12 @@ function EditAvatarPopup(props) {
   // avatar должна быть объявлена здесь, чтобы реф мог иметь к ней доступ
   const avatarLink = React.useRef('');
 
-
-  
   function handleSubmit(e) {
     e.preventDefault();
     avatarLink.current.focus(); 
     currentUser.avatar = avatarLink.current.value;
     props.onUpdateAvatar(currentUser);
   } 
-
 
   return(
     <PopupWithForm name="avatar" title="Обновить аватар" isOpen={props.isOpen}  onClosePopup={props.onClose} onSubmit={handleSubmit} onUpdateAvatar={props.onUpdateAvatar}>
@@ -33,10 +29,6 @@ function EditAvatarPopup(props) {
     </button>
   </PopupWithForm>
   );
-
 }
 
-
-
-  
 export default EditAvatarPopup; 

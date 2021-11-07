@@ -1,22 +1,14 @@
 import React from 'react'; 
-//
-//import  {apiData}  from '../utils/Api';
 import Card from './Card';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import {CurrentCardsContext}  from '../contexts/CurrentCardsContext'
 
-
 function Main(props) {
-
 
    // Подписываемся на контекст CurrentUserContext
   const userData = React.useContext(CurrentUserContext);
   // Подписываемся на контекст CurrentCardsContext
   const cardsData = React.useContext(CurrentCardsContext);
-
-
-
-
 
   function CardList(props) {
     const cards = props.cards;
@@ -54,7 +46,5 @@ function Main(props) {
   );
 }
 
-
-    
 export default Main;
 

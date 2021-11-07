@@ -9,16 +9,9 @@
     left: 0px;
     right: 0px;
     box-sizing: border-box;
-    /*padding: 284px 84px 0px;*/
     display: flex;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 1.0s, visibility 1.0s;
+    transition: opacity 0.5s, visibility 0.5s;
 }
 
-/*@media screen and (max-width: 400px) {
-    .popup {
-      top: -315px;
-      bottom: 0px;
-    }
-}*/

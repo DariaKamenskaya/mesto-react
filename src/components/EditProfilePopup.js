@@ -2,7 +2,6 @@ import React from 'react';
 import PopupWithForm from '../components/PopupWithForm';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-
 function EditProfilePopup(props) {
 
   // Стейт, в котором содержится значение инпута
@@ -37,7 +36,6 @@ function EditProfilePopup(props) {
     });
   } 
 
-
   return(
     <PopupWithForm name="user" title="Редактировать профиль" isOpen={props.isOpen}  onClosePopup={props.onClose} onSubmit={handleSubmit} onUpdateUser={props.onUpdateUser}>
     <label className="popup__form-field">
@@ -55,10 +53,6 @@ function EditProfilePopup(props) {
     </button>
   </PopupWithForm>
   );
-
 }
 
-
-
-  
 export default EditProfilePopup; 

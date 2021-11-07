@@ -3,7 +3,6 @@ import PopupWithForm from '../components/PopupWithForm';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import {CurrentCardsContext}  from '../contexts/CurrentCardsContext'
 
-
 function AddPlacePopup(props) {
 
   // Подписка на контекст
@@ -13,9 +12,6 @@ function AddPlacePopup(props) {
  // Стейт, в котором содержится значение инпута
   const [namePlace, setNamePlace] = React.useState('');
   const [linkPlace, setLinkPlace] = React.useState('');
-
-
-
 
   // Обработчик изменения инпута обновляет стейт
   function handleChangeNamePlace(e) {
@@ -36,7 +32,6 @@ function AddPlacePopup(props) {
     }, cardsData);
   } 
 
-
   return(
     <PopupWithForm name="add" title="Новое место"  isOpen={props.isOpen}  onClosePopup={props.onClose} onSubmit={handleSubmit}>
       <label className="popup__form-field">
@@ -54,10 +49,6 @@ function AddPlacePopup(props) {
       </button>
     </PopupWithForm>
   );
-
 }
 
-
-
-  
 export default AddPlacePopup; 

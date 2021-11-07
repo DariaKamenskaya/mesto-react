@@ -6,8 +6,6 @@ function Card(props) {
   handleLikeClick = handleLikeClick.bind(this);
   handleDeleteClick = handleDeleteClick.bind(this);
 
-
-
   // Определяем, являемся ли мы владельцем текущей карточки
   const isOwn = props.card.owner._id === props.currentUser._id;
 
@@ -36,8 +34,6 @@ function Card(props) {
     props.onCardDelete(props.card,  props.setCards);
   }
 
-
-
   return(
     <article className="element">
       <img src={props.card.link} alt={props.card.name} className="element__image"  onClick={handleClick} />
@@ -51,10 +47,6 @@ function Card(props) {
       </div>
     </article>
   );
-
 }
 
-
-
-  
 export default Card; 

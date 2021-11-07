@@ -2,7 +2,6 @@ import React from 'react';
 
 class PopupWithForm extends React.Component {
 
-
   handleSubmit = () => {
     this.setState({ submitted: true });
   };
@@ -19,8 +18,7 @@ class PopupWithForm extends React.Component {
         </div>
       </section>
     );
+  }
 }
 
-}
-  
 export default PopupWithForm; 
