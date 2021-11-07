@@ -73,6 +73,36 @@ function App() {
   };
 
 
+  function handleCardLike(card, currentUser, setCurrentCards) {
+    // Снова проверяем, есть ли уже лайк на этой карточке
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    
+    // Отправляем запрос в API и получаем обновлённые данные карточки
+    apiData.changeLikeCardStatus(card._id, isLiked, setCurrentCards)
+    .then((newCard) => {
+      setCurrentCards((cardsData) => cardsData.map((c) => c._id === card._id ? newCard : c));
+    })
+    .catch((err) => {
+      console.log(err);
+      return [];
+    });
+    
+  } 
+
+  function handleCardDelete(deletedCard, setCurrentCards) {
+    // Отправляем запрос в API
+    apiData.deleteCard(deletedCard._id)
+    .then(() => {
+      setCurrentCards((cardsData) => cardsData.filter((c) => {return c._id != deletedCard._id }));
+    })
+    .catch((err) => {
+      console.log(err); // "Что-то пошло не так: ..."
+      return [];
+    });
+    
+  } 
+
+
   React.useEffect(() => {
     // запрос в API за пользовательскими данными
     Promise.all([ 
@@ -96,7 +126,9 @@ function App() {
       <div className="page">
         <Header />
         <CurrentCardsContext.Provider value={currentCards}>
-          <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} setCards={setCurrentCards}/>
+          <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} 
+                onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} 
+                setCards={setCurrentCards} onCardLike={handleCardLike} onCardDelete={handleCardDelete}/>
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/> 
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/> 
         </CurrentCardsContext.Provider>

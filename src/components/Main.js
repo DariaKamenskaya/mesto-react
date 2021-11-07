@@ -1,6 +1,6 @@
 import React from 'react'; 
 //
-import  {apiData}  from '../utils/Api';
+//import  {apiData}  from '../utils/Api';
 import Card from './Card';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import {CurrentCardsContext}  from '../contexts/CurrentCardsContext'
@@ -15,34 +15,7 @@ function Main(props) {
   const cardsData = React.useContext(CurrentCardsContext);
 
 
-  function handleCardLike(card, currentUser, setCurrentCards) {
-    // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
-    
-    // Отправляем запрос в API и получаем обновлённые данные карточки
-    apiData.changeLikeCardStatus(card._id, isLiked, setCurrentCards)
-    .then((newCard) => {
-      setCurrentCards((cardsData) => cardsData.map((c) => c._id === card._id ? newCard : c));
-    })
-    .catch((err) => {
-      console.log(err);
-      return [];
-    });
-    
-  } 
 
-  function handleCardDelete(deletedCard, setCurrentCards) {
-    // Отправляем запрос в API
-    apiData.deleteCard(deletedCard._id)
-    .then(() => {
-      setCurrentCards((cardsData) => cardsData.filter((c) => {return c._id != deletedCard._id }));
-    })
-    .catch((err) => {
-      console.log(err); // "Что-то пошло не так: ..."
-      return [];
-    });
-    
-  } 
 
 
   function CardList(props) {
@@ -76,7 +49,7 @@ function Main(props) {
         </div>
         <button className="profile__add-button" type="button"  onClick={props.onAddPlace}></button>
       </section>
-     <CardList cards={cardsData} onCardClick={props.onCardClick} onCardLike={handleCardLike} setCards={props.setCards} onCardDelete={handleCardDelete}/>  
+     <CardList cards={cardsData} onCardClick={props.onCardClick} onCardLike={props.onCardLike} setCards={props.setCards} onCardDelete={props.onCardDelete}/>  
     </main>
   );
 }
