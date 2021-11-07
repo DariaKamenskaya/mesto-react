@@ -36,7 +36,7 @@ function Main(props) {
     <main>
       <section className="profile">
         <div className="profile__avatar-conteiner">
-          <div className="profile__avatar-overlay"></div>
+          <div className="profile__avatar-overlay" onClick={props.onEditAvatar}></div>
           <img src={userData.avatar} alt={userData.name} className="profile__avatar"  />
           <button className="profile__avatar-button" onClick={props.onEditAvatar}></button>
         </div>
