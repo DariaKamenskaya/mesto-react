@@ -22,15 +22,15 @@ function Card(props) {
     `element__heart-button  ${isLiked ? 'element__heart-button-active' : ' '}`
   );
 
-  function  handleClick()  {
+  function handleClick() {
     props.onCardClick(props.card);
   } 
 
-  function handleLikeClick() {
+  function handleLikeClick()  {
     props.onCardLike(props.card, props.currentUser,  props.setCards);
   }
 
-  function handleDeleteClick() {
+  function handleDeleteClick()  {
     props.onCardDelete(props.card,  props.setCards);
   }
 
